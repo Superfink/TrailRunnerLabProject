@@ -1,6 +1,8 @@
 
 
 import org.junit.jupiter.api.*;
+
+import se.kristin.FileStorage;
 import se.kristin.Record;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,5 +29,14 @@ public class TestRecord {
         assertEquals(run.getDate(), LocalDate.now());
     }
 
+    @Test
+    public void testAvailableID(){
+        FileStorage mockRecordFileStorage = new FileStorage();
+       // mockRecordFileStorage = TestFileStorage.fileStorageMock;
+        assertEquals(true, Record.AvailableID(mockRecordFileStorage, "7")); 
+        
+    }
+
+    
     
 }

@@ -1,11 +1,16 @@
 package se.kristin;
 
 import java.time.LocalDate;
+import java.util.*;
 
 public class Record {
+
+    String ID;
     double distance;
     int time;
     LocalDate date;
+    FileStorage fileStorage;
+
 
     public Record(){
         this.distance = 0;
@@ -25,9 +30,29 @@ public class Record {
         this.date = date;
     }
 
+    public static boolean AvailableID(FileStorage fileStorage, String ID){
+        
+        List<String> IDArray = fileStorage.getRecordIDs();
+        
+        
+        
+        
+        
+        return true;
+    }
+
 
 
 // -------  Getters and setters --------
+
+
+    public String getID() {
+        return this.ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
     public double getDistance() {
         return this.distance;

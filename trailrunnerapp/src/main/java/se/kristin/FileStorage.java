@@ -8,7 +8,7 @@ public class FileStorage {
 
     //Overloaded
     public void createRecord(double distance, int time_seconds, LocalDate date){
-        String id = "5";
+        String id = "5"; //Change to automatic ID
         String.join(",", id, String.valueOf(distance), String.valueOf(time_seconds), String.valueOf(date));
     }
     
@@ -36,4 +36,6 @@ public class FileStorage {
     public void deleteRecord(String id) throws IOException {
         throw new UnsupportedOperationException();
     }
+
+    
 }

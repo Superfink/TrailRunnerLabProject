@@ -1,31 +1,7 @@
-Skapa löpare --KLART
-Sätt ålder --KLART
-Sätt längd --KLART
-Sätt vikt --KLART
-
-
-Skapa löptur --KLART
-Sätt ID
-
-Härnäst:
-Skapa mocklista att mäta mot.
-
-
-Sätt distans (km, double)
-Sätt tid (H/M/S eller s? svar: användarinmatning/visning i HHMMSS, datalagring i s)
-Sätt datum (YY/MM/DD) (med option att automatisk tilldelas om lämnas tomt) --KLART
-Sätt automatiskt dagens datum om datum saknas --KLART
---(Avancerat: kasta exception om datum eller tid saknas)
-
-Tidkonvertering, HHMMSS till sekunder --KLART
-Tidkonvertering, sekunder till HHMMSS --KLART
 
 
 
-
-Lägg till löptur i mocklista
-Kolla att ID inte redan finns - ge fel
---(Avancerat: Kolla vad senaste ID är och tilldela automatiskt ID)
+------Fokus-----
 
 Beräkningar, varje löprunda: 
 - Medelhastighet km/h
@@ -48,6 +24,41 @@ Radera löprunda genom att ange ID
 Filtrera med avseende på distans (ange vilka ID?)
 Filtrera med avseendepå tid (ange vilka ID?)
 
+-------
+
+
+Skapa löpare --KLART
+Sätt ålder --KLART
+Sätt längd --KLART
+Sätt vikt --KLART
+
+
+Skapa löptur --KLART
+Sätt ID --IN PROGRESS
+
+Härnäst:
+Skapa mocklista att mäta mot. --IN PROGRESS
+
+
+
+
+Sätt distans (km, double)
+Sätt tid (H/M/S eller s? svar: användarinmatning/visning i HHMMSS, datalagring i s)
+Sätt datum (YY/MM/DD) (med option att automatisk tilldelas om lämnas tomt) --KLART
+Sätt automatiskt dagens datum om datum saknas --KLART
+--(Avancerat: kasta exception om datum eller tid saknas)
+
+Tidkonvertering, HHMMSS till sekunder --KLART
+Tidkonvertering, sekunder till HHMMSS --KLART
+
+
+
+
+Lägg till löptur i mocklista
+Kolla att ID inte redan finns - ge fel
+--(Avancerat: Kolla vad senaste ID är och tilldela automatiskt ID)
+
+
 OM TESTER - 
 God testpraxis: 
 - Ett test testar en enda sak
@@ -59,5 +70,3 @@ God testpraxis:
 
 NOTE: Testar inte getters och setters.
 
-
-KLART:
