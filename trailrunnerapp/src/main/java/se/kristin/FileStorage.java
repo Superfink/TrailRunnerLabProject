@@ -6,9 +6,15 @@ import java.util.List;
 
 public class FileStorage {
 
+    //Overloaded
+    public void createRecord(double distance, int time_seconds, LocalDate date){
+        String id = "5";
+        String.join(",", id, String.valueOf(distance), String.valueOf(time_seconds), String.valueOf(date));
+    }
+    
     public void createRecord(String id, double distance, int time_seconds, LocalDate date) 
             /*throws IOException*/ {
-       //TestRecord.fileStorageMock.add()
+       
        
        
        
