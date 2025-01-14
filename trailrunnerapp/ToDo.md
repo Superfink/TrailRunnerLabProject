@@ -4,7 +4,7 @@
 ------Fokus-----
 
 Beräkningar, varje löprunda: 
-- Medelhastighet km/h
+- Medelhastighet km/h --KLART
 - km-tid, min/km
 - Fitness Score (efter varje löptur), ej <0, endast heltal, Om första rundan är värdet 0
 

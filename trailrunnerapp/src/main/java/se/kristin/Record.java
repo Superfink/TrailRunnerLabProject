@@ -10,6 +10,7 @@ public class Record {
     int time;
     LocalDate date;
     FileStorage fileStorage;
+    double avgSpeed;
 
 
     public Record(){
@@ -30,14 +31,17 @@ public class Record {
         this.date = date;
     }
 
+
+// ---- Methods -----
+
+
+
+
+
+    ///TODO -
     public static boolean AvailableID(FileStorage fileStorage, String ID){
-        
+
         List<String> IDArray = fileStorage.getRecordIDs();
-        
-        
-        
-        
-        
         return true;
     }
 
