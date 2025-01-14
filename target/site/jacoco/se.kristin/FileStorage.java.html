@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileStorage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TrailRunnerLabProject</a> &gt; <a href="index.source.html" class="el_package">se.kristin</a> &gt; <span class="el_source">FileStorage.java</span></div><h1>FileStorage.java</h1><pre class="source lang-java linenums">package se.kristin;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
+
+<span class="fc" id="L7">public class FileStorage {</span>
+
+    //Overloaded
+    public void createRecord(double distance, int time_seconds, LocalDate date){
+<span class="nc" id="L11">        String id = &quot;5&quot;; //Change to automatic ID</span>
+<span class="nc" id="L12">        String.join(&quot;,&quot;, id, String.valueOf(distance), String.valueOf(time_seconds), String.valueOf(date));</span>
+<span class="nc" id="L13">    }</span>
+    
+    public void createRecord(String id, double distance, int time_seconds, LocalDate date) 
+            /*throws IOException*/ {
+        //throw new UnsupportedOperationException();
+<span class="nc" id="L18">    }</span>
+
+    public Record readRecord(String id) /*throws IOException*/ {
+        //throw new UnsupportedOperationException();
+<span class="nc" id="L22">        Record record = new Record();</span>
+<span class="nc" id="L23">        return record;</span>
+    }
+
+    public List&lt;String&gt; getRecordIDs() {
+<span class="nc" id="L27">        throw new UnsupportedOperationException();</span>
+    }
+    
+    public void deleteRecord(String id) throws IOException {
+<span class="nc" id="L31">        throw new UnsupportedOperationException();</span>
+    }
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -16,11 +16,10 @@ import org.junit.jupiter.api.Test;
 public class TestFileStorage {
     protected FileStorage fileStorageMock;
     
-
+    
     @BeforeEach
     public void setUp(){
         fileStorageMock = mock(FileStorage.class);
-        
     }
 
     @Test
@@ -33,7 +32,7 @@ public class TestFileStorage {
     @Test
     public void testGetRecordIDs(){
                 
-        List<String> mockList = new ArrayList<String>(Arrays.asList("1", "2")) ;
+        List<String> mockList = new ArrayList<String>(Arrays.asList("1", "2"));
         when(fileStorageMock.getRecordIDs()).thenReturn(mockList);
         
         List<String> expected = mockList;

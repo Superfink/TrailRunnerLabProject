@@ -3,17 +3,16 @@
 
 ------Fokus-----
 
+ID-hantering!
+TDD-Dagboken!
 
-Först:
-- Fitness Score (efter varje löptur), ej <0, endast heltal, Om första rundan är värdet 0
-X + Y + Z/A - B/2
-X - nuvarande fitness score
-Y - distans, km
-Z - medelhastighet, km/h
-A - kilometertid (min/km)
-B - Dagar sedan senaste löptur
+Beräkna & tilldela automatiskt
 
-Test: Beräkna dagar sedan senaste löptur
+- Record: Medelhastighet enligt formeln: $$ hastighet = {distans(km) \over tid(hrs)} 
+- Record: Kilometertid enligt formeln: $$ kilometertid = {tid(min) \over distans(km)}
+- Runner: Nytt fitness score
+!! - Obs fitness score - om det är första löpturen är värdet 0! <-- lösa genom att dagar sedan senaste löptur = automatiskt 0? Skicka in boolean firstRecord?
+
 
 Next up:
 Printa detaljer för löprunda genom att ange ID
@@ -23,6 +22,17 @@ Kolla att ID inte redan finns - ge fel
 --(Avancerat: Kolla vad senaste ID är och tilldela automatiskt ID)
 
 ---------------
+- Fitness Score (efter varje löptur), ej <0, endast heltal, Om första rundan är värdet 0
+X + Y + Z/A - B/2
+X - nuvarande fitness score
+Y - distans, km
+Z - medelhastighet, km/h
+A - kilometertid (min/km)
+B - Dagar sedan senaste löptur
+ --skicka in nuvarande fitnessscore + record
+
+
+Test: Beräkna dagar sedan senaste löptur --KLART
 
 Beräkningar, varje löprunda: 
 - Medelhastighet km/h --KLART
@@ -56,10 +66,6 @@ Sätt automatiskt dagens datum om datum saknas --KLART
 
 Tidkonvertering, HHMMSS till sekunder --KLART
 Tidkonvertering, sekunder till HHMMSS --KLART
-
-
-
-
 
 
 

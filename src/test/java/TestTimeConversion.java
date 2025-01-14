@@ -5,32 +5,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class TestTimeConversion {
-        @Test
+    @Test
     public void testConvertTimeToSeconds(){
-        assertEquals(TimeConversion.convertHoursToSeconds(1), 3600);
-        assertEquals(TimeConversion.convertMinutesToSeconds(30), 1800);
+        assertEquals(3600, TimeConversion.convertHoursToSeconds(1));
+        assertEquals(1800, TimeConversion.convertMinutesToSeconds(30));
     }
 
     @Test
     public void testConvertSecondsToTime(){
-        assertEquals(TimeConversion.convertSecondsToHours(4502), 1);  //4502s = 1h 15m 2s
-        assertEquals(TimeConversion.convertSecondsToMinutes(4502), 15);
-        assertEquals(TimeConversion.convertSecondsToRemainingSeconds(4502), 2);
+        assertEquals(1, TimeConversion.convertSecondsToHours(4502));  //4502s = 1h 15m 2s
+        assertEquals(15, TimeConversion.convertSecondsToMinutes(4502));
+        assertEquals(2, TimeConversion.convertSecondsToRemainingSeconds(4502));
 
-        assertEquals(TimeConversion.convertSecondsToHours(1234), 0);  //1234s = 1h 15m 2s
-        assertEquals(TimeConversion.convertSecondsToMinutes(1234), 20);
-        assertEquals(TimeConversion.convertSecondsToRemainingSeconds(1234), 34);
+        assertEquals(0, TimeConversion.convertSecondsToHours(1234));  //1234s = 1h 15m 2s
+        assertEquals(20, TimeConversion.convertSecondsToMinutes(1234));
+        assertEquals(34, TimeConversion.convertSecondsToRemainingSeconds(1234));
 
-        assertEquals(TimeConversion.convertSecondsToHours(89000), 24);  //89000s = 24h 43m 20s
-        assertEquals(TimeConversion.convertSecondsToMinutes(89000), 43);
-        assertEquals(TimeConversion.convertSecondsToRemainingSeconds(89000), 20 );
+        assertEquals(24, TimeConversion.convertSecondsToHours(89000));  //89000s = 24h 43m 20s
+        assertEquals(43, TimeConversion.convertSecondsToMinutes(89000));
+        assertEquals(20, TimeConversion.convertSecondsToRemainingSeconds(89000));
     }
 
     @Test
     public void testHHMMSStoSeconds(){
-        assertEquals(TimeConversion.convertHoursToSeconds(2), 7200);
-        assertEquals(TimeConversion.convertMinutesToSeconds(4), 240);
-        assertEquals(TimeConversion.convertHHMMSStoSeconds(1, 15, 2), 4502);
+        assertEquals(7200, TimeConversion.convertHoursToSeconds(2));
+        assertEquals(240, TimeConversion.convertMinutesToSeconds(4));
+        assertEquals(4502, TimeConversion.convertHHMMSStoSeconds(1, 15, 2));
     }
 
 }

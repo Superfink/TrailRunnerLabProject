@@ -16,7 +16,14 @@ public class Calculations {
         DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
         String avgSpeedString = format_oneDecimal.format((distance_km*3600/(time_seconds)));
         return Double.valueOf(avgSpeedString);
+    }
 
+    //Overloading
+    public static double avgSpeedKmPerHour(Record record){
+
+        DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
+        String avgSpeedString = format_oneDecimal.format((record.getDistance()*3600/(record.getTime())));
+        return Double.valueOf(avgSpeedString);
     }
 
     public static double speedMinutesPerKm(double distance_km, int time_seconds){
@@ -25,7 +32,17 @@ public class Calculations {
         String speedString = format_oneDecimal.format((time_seconds/(distance_km * 60)));
         return Double.valueOf(speedString);
     }
-    
+
+    //Overloading
+    public static double speedMinutesPerKm(Record record){
+
+        DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
+        String speedString = format_oneDecimal.format((record.getTime()/(record.getDistance() * 60)));
+        return Double.valueOf(speedString);
+    }
+
+
+
     public static double totalDistance(List<Double> distanceList){
         double totalDistance = 0;
         for(int i = 0; i < distanceList.size(); i++){
@@ -37,9 +54,7 @@ public class Calculations {
     public static double avgDistanceAllRecords(List<Double> distanceList){
 
         DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
-        
         double totalDistance = totalDistance(distanceList);
-
         double avgDistance = totalDistance / distanceList.size();
         String speedString = format_oneDecimal.format(avgDistance);
         return Double.valueOf(speedString);
@@ -49,12 +64,37 @@ public class Calculations {
         return dateList.get(dateList.size()-1);
     }
 
-    public static int daysBetweenTwoDates(LocalDate date1, LocalDate date2){
+    public static int daysBetween(LocalDate date1, LocalDate date2){
         return (int) Math.abs(ChronoUnit.DAYS.between(date1, date2));
     }
 
-    public static int daysBetweenRecords(Record record1, Record record2){
-        return daysBetweenTwoDates(record1.getDate(), record2.getDate());
+    //Overloading
+    public static int daysBetween(Record record1, Record record2){
+        return daysBetween(record1.getDate(), record2.getDate());
+    }
+
+    public static int calculateNewFitnessScore(int fitnessScore, Record record, int daysSinceLastRecord){
+
+        double newFitnessScore = 
+        (double) fitnessScore + 
+        record.getDistance() + 
+        (avgSpeedKmPerHour(record) / speedMinutesPerKm(record)) - 
+        (daysSinceLastRecord/2);
+
+        if(newFitnessScore < 0){
+            return 0;
+        }
+
+        return (int) newFitnessScore;
+  
+        /*formel: - Fitness Score (efter varje löptur), ej <0, endast heltal, Om första rundan är värdet 0
+        X + Y + Z/A - B/2
+        X - nuvarande fitness score
+        Y - distans, km
+        Z - medelhastighet, km/h
+        A - kilometertid (min/km)
+        B - Dagar sedan senaste löptur
+        */
     }
 
 
