@@ -2,20 +2,24 @@ package se.kristin;
 
 public class Runner {
 
-    int height;
-    int weight;
-    int age;
+    private int height;
+    private int weight;
+    private int age;
+    private int fitnessScore;
+
 
     public Runner(){
         this.height = 0;
         this.weight = 0;
         this.age = 0;
+        this.fitnessScore = 0;
     }
 
     public Runner(int height, int weight, int age){
         this.height = height;
         this.weight = weight;
         this.age = age;
+        this.fitnessScore = 0;
     }
 
 
@@ -43,6 +47,14 @@ public class Runner {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getFitnessScore() {
+        return fitnessScore;
+    }
+
+    public void setFitnessScore(int fitnessScore) {
+        this.fitnessScore = fitnessScore;
     }
 
 }
