@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Calculations.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TrailRunnerLabProject</a> &gt; <a href="index.source.html" class="el_package">se.kristin</a> &gt; <span class="el_source">Calculations.java</span></div><h1>Calculations.java</h1><pre class="source lang-java linenums">package se.kristin;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.Locale;
+
+<span class="nc" id="L10">public class Calculations {</span>
+    
+    
+    
+    public static double avgSpeedKmPerHour(double distance_km, int time_seconds){
+
+<span class="fc" id="L16">        DecimalFormat format_oneDecimal = new DecimalFormat(&quot;#.#&quot;, new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken</span>
+<span class="fc" id="L17">        String avgSpeedString = format_oneDecimal.format((distance_km*3600/(time_seconds)));</span>
+<span class="fc" id="L18">        return Double.valueOf(avgSpeedString);</span>
+    }
+
+    //Overloading
+    public static double avgSpeedKmPerHour(Record record){
+
+<span class="fc" id="L24">        DecimalFormat format_oneDecimal = new DecimalFormat(&quot;#.#&quot;, new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken</span>
+<span class="fc" id="L25">        String avgSpeedString = format_oneDecimal.format((record.getDistance()*3600/(record.getTime())));</span>
+<span class="fc" id="L26">        return Double.valueOf(avgSpeedString);</span>
+    }
+
+    public static double speedMinutesPerKm(double distance_km, int time_seconds){
+
+<span class="fc" id="L31">        DecimalFormat format_oneDecimal = new DecimalFormat(&quot;#.#&quot;, new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken</span>
+<span class="fc" id="L32">        String speedString = format_oneDecimal.format((time_seconds/(distance_km * 60)));</span>
+<span class="fc" id="L33">        return Double.valueOf(speedString);</span>
+    }
+
+    //Overloading
+    public static double speedMinutesPerKm(Record record){
+
+<span class="fc" id="L39">        DecimalFormat format_oneDecimal = new DecimalFormat(&quot;#.#&quot;, new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken</span>
+<span class="fc" id="L40">        String speedString = format_oneDecimal.format((record.getTime()/(record.getDistance() * 60)));</span>
+<span class="fc" id="L41">        return Double.valueOf(speedString);</span>
+    }
+
+
+
+    public static double totalDistance(List&lt;Double&gt; distanceList){
+<span class="fc" id="L47">        double totalDistance = 0;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        for(int i = 0; i &lt; distanceList.size(); i++){</span>
+<span class="fc" id="L49">            totalDistance = totalDistance + distanceList.get(i);</span>
+        }
+<span class="fc" id="L51">        return totalDistance;</span>
+    }
+
+    public static double avgDistanceAllRecords(List&lt;Double&gt; distanceList){
+
+<span class="fc" id="L56">        DecimalFormat format_oneDecimal = new DecimalFormat(&quot;#.#&quot;, new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken</span>
+<span class="fc" id="L57">        double totalDistance = totalDistance(distanceList);</span>
+<span class="fc" id="L58">        double avgDistance = totalDistance / distanceList.size();</span>
+<span class="fc" id="L59">        String speedString = format_oneDecimal.format(avgDistance);</span>
+<span class="fc" id="L60">        return Double.valueOf(speedString);</span>
+    }
+
+    public static LocalDate getDateOfLastRecord(List&lt;LocalDate&gt; dateList){
+<span class="fc" id="L64">        return dateList.get(dateList.size()-1);</span>
+    }
+
+    public static int daysBetween(LocalDate date1, LocalDate date2){
+<span class="fc" id="L68">        return (int) Math.abs(ChronoUnit.DAYS.between(date1, date2));</span>
+    }
+
+    //Overloading
+    public static int daysBetween(Record record1, Record record2){
+<span class="fc" id="L73">        return daysBetween(record1.getDate(), record2.getDate());</span>
+    }
+
+    public static int calculateNewFitnessScore(int fitnessScore, Record record, int daysSinceLastRecord){
+
+<span class="fc" id="L78">        double newFitnessScore = </span>
+        (double) fitnessScore + 
+<span class="fc" id="L80">        record.getDistance() + </span>
+<span class="fc" id="L81">        (avgSpeedKmPerHour(record) / speedMinutesPerKm(record)) - </span>
+        (daysSinceLastRecord/2);
+
+<span class="fc bfc" id="L84" title="All 2 branches covered.">        if(newFitnessScore &lt; 0){</span>
+<span class="fc" id="L85">            return 0;</span>
+        }
+
+<span class="fc" id="L88">        return (int) newFitnessScore;</span>
+  
+        /*formel: - Fitness Score (efter varje löptur), ej &lt;0, endast heltal, Om första rundan är värdet 0
+        X + Y + Z/A - B/2
+        X - nuvarande fitness score
+        Y - distans, km
+        Z - medelhastighet, km/h
+        A - kilometertid (min/km)
+        B - Dagar sedan senaste löptur
+        */
+    }
+
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

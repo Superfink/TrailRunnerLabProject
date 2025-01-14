@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Record.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TrailRunnerLabProject</a> &gt; <a href="index.source.html" class="el_package">se.kristin</a> &gt; <span class="el_source">Record.java</span></div><h1>Record.java</h1><pre class="source lang-java linenums">package se.kristin;
+
+import java.time.LocalDate;
+import java.util.*;
+
+public class Record {
+
+    String ID;
+    double distance;
+    int time;
+    LocalDate date;
+    FileStorage fileStorage;
+    double avgSpeed_kmPerHour;
+    double avgSpeed_minPerKm;
+
+
+<span class="fc" id="L17">    public Record(){</span>
+<span class="fc" id="L18">        this.distance = 0;</span>
+<span class="fc" id="L19">        this.time = 0;</span>
+<span class="fc" id="L20">        this.date = LocalDate.now();</span>
+<span class="fc" id="L21">    }</span>
+
+<span class="fc" id="L23">    public Record(double distance, int time){</span>
+<span class="fc" id="L24">        this.distance = distance;</span>
+<span class="fc" id="L25">        this.time = time;</span>
+<span class="fc" id="L26">        this.date = LocalDate.now();</span>
+<span class="fc" id="L27">    }</span>
+
+<span class="fc" id="L29">    public Record(double distance, int time, LocalDate date){</span>
+<span class="fc" id="L30">        this.distance = distance;</span>
+<span class="fc" id="L31">        this.time = time;</span>
+<span class="fc" id="L32">        this.date = date;</span>
+<span class="fc" id="L33">    }</span>
+
+
+// ---- Methods -----
+
+
+    ///TODO -
+    /// 
+    /// 
+    public static boolean AvailableID(FileStorage fileStorage, String ID){
+
+<span class="nc" id="L44">        List&lt;String&gt; IDArray = fileStorage.getRecordIDs();</span>
+<span class="nc" id="L45">        return true;</span>
+    }
+
+
+
+// -------  Getters and setters --------
+
+
+    public String getID() {
+<span class="nc" id="L54">        return this.ID;</span>
+    }
+
+    public void setID(String ID) {
+<span class="nc" id="L58">        this.ID = ID;</span>
+<span class="nc" id="L59">    }</span>
+
+    public double getDistance() {
+<span class="fc" id="L62">        return this.distance;</span>
+    }
+
+    public void setDistance(double distance) {
+<span class="nc" id="L66">        this.distance = distance;</span>
+<span class="nc" id="L67">    }</span>
+
+    public int getTime() {
+<span class="fc" id="L70">        return this.time;</span>
+    }
+
+    public void setTime(int time) {
+<span class="nc" id="L74">        this.time = time;</span>
+<span class="nc" id="L75">    }</span>
+
+    public LocalDate getDate() {
+<span class="fc" id="L78">        return this.date;</span>
+    }
+
+    public void setDate(LocalDate date) {
+<span class="nc" id="L82">        this.date = date;</span>
+<span class="nc" id="L83">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
