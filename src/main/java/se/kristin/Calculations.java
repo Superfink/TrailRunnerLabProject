@@ -48,13 +48,15 @@ public class Calculations {
     public static LocalDate getDateOfLastRecord(List<LocalDate> dateList){
         return dateList.get(dateList.size()-1);
     }
-    public static int daysBetweenTwoLastRecords(List<LocalDate> dateList){
-        LocalDate datePrevious = dateList.get(dateList.size()-2);
-        LocalDate dateLatest = dateList.get(dateList.size()-1);    
-        long days = ChronoUnit.DAYS.between(datePrevious, dateLatest);
-        return (int) days;
 
+    public static int daysBetweenTwoDates(LocalDate date1, LocalDate date2){
+        return (int) Math.abs(ChronoUnit.DAYS.between(date1, date2));
     }
+
+    public static int daysBetweenRecords(Record record1, Record record2){
+        return daysBetweenTwoDates(record1.getDate(), record2.getDate());
+    }
+
 
 }
 

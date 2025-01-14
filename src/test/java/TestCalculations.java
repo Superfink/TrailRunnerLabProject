@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.*;
 
+import net.bytebuddy.asm.Advice.Local;
 import se.kristin.Calculations;
 import se.kristin.FileStorage;
 import se.kristin.Record;
@@ -50,9 +51,22 @@ public class TestCalculations {
     }
 
     @Test
-    public void testDaysBetweenTwoLastRecords(){
-        List<LocalDate> dateList = Arrays.asList(LocalDate.of(2025, 01, 02), LocalDate.of(2025,01,03), LocalDate.of(2025,01,04), LocalDate.of(2025,01,06));
-        assertEquals(2, Calculations.daysBetweenTwoLastRecords(dateList));
-      
+    public void testDaysBetweenTwoDates(){
+        LocalDate mockDate1 = LocalDate.of(2024, 12, 2);
+        LocalDate mockDate2 = LocalDate.of(2024, 12, 31);
+        LocalDate mockDate3 = LocalDate.of(2025, 1, 5);
+
+        assertEquals(34, Calculations.daysBetweenTwoDates(mockDate1, mockDate3));
+        assertEquals(5, Calculations.daysBetweenTwoDates(mockDate2, mockDate3));
+        assertEquals(5, Calculations.daysBetweenTwoDates(mockDate3, mockDate2));
+    }
+
+    @Test
+    public static void testDaysBetweenRecords(){
+        Record mockRecord1 = new Record(5.5, 2345, LocalDate.of(2025,01,01));
+        Record mockRecord2 = new Record(5.5, 2345, LocalDate.of(2024,01,01));
+        Record mockRecord3 = new Record(5.5, 2345, LocalDate.of(2024,06,01));
+
+        assertEquals(365, Calculations.daysBetweenRecords(mockRecord1, mockRecord2));
     }
 }
