@@ -3,8 +3,30 @@
 
 ------Fokus-----
 
-ID-hantering!
-TDD-Dagboken!
+skapa löplista för löpare
+testa om id finns (i konstruktor)
+Ändra ID om felmeddelande
+
+
+Kolla att ID inte redan finns - ge fel -- KLART, MEN: --Gör detta i konstruktor! + ge fel
+--(Avancerat: Kolla vad senaste ID är och tilldela automatiskt ID)
+
+Se över att all funktionalitet är täckt
+
+Filtera på distans -- returnera LIst<String> med aktuella ID
+Filtrera på tid -- returnera LIst<String> med aktuella ID
+
+
+---
+Steg 2: Se över fillagring
+
+
+---------------
+
+
+Printa detaljer för löprunda genom att ange ID -- KLART
+Radera löprunda genom att ange ID -- KLART
+
 
 Beräkna & tilldela automatiskt
 
@@ -14,14 +36,7 @@ Beräkna & tilldela automatiskt
 !! - Obs fitness score - om det är första löpturen är värdet 0! <-- lösa genom att dagar sedan senaste löptur = automatiskt 0? Skicka in boolean firstRecord?
 
 
-Next up:
-Printa detaljer för löprunda genom att ange ID
-Radera löprunda genom att ange ID
-
-Kolla att ID inte redan finns - ge fel
---(Avancerat: Kolla vad senaste ID är och tilldela automatiskt ID)
-
----------------
+TDD-Dagboken! - Under kontroll
 - Fitness Score (efter varje löptur), ej <0, endast heltal, Om första rundan är värdet 0
 X + Y + Z/A - B/2
 X - nuvarande fitness score

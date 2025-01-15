@@ -1,10 +1,9 @@
 import org.junit.jupiter.api.*;
-
-import net.bytebuddy.asm.Advice.Local;
 import se.kristin.Calculations;
-import se.kristin.FileStorage;
 import se.kristin.Record;
 import static org.junit.jupiter.api.Assertions.*;
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +27,15 @@ public class TestCalculations {
     Record mockRecord7;
     Record mockRecord8;
     Record mockRecord9;
+    Record mockRecord10;
+    Record mockRecord11;
+    Record mockRecord12;
+    Record mockRecord13;
+
+    List<LocalDate> mockDateList;
+
+    ArrayList<Record> mockRecordList;
+
 
 
     @BeforeEach
@@ -48,6 +56,20 @@ public class TestCalculations {
         mockRecord7 = new Record(8.3, 4550);
         mockRecord8 = new Record(8.3, 4567);
         mockRecord9 = new Record(3.5, 5432);
+
+        mockRecord10 = new Record("ID1", 1.1, 1111, LocalDate.of(2025,01,01));
+        mockRecord11 = new Record("ID2", 2.2, 2222, LocalDate.of(2025,01,02));
+        mockRecord12 = new Record("ID3", 3.3, 3333, LocalDate.of(2025,01,03));
+        mockRecord13 = new Record("ID4", 4.4, 4444, LocalDate.of(2025,01,04));
+
+        mockDateList = Arrays.asList(LocalDate.of(2025, 01, 02), LocalDate.of(2025,01,03), LocalDate.of(2025,01,04), LocalDate.of(2025,01,06));
+
+        mockRecordList = new ArrayList<>();
+        mockRecordList.add(mockRecord10);
+        mockRecordList.add(mockRecord11);
+        mockRecordList.add(mockRecord12);
+        mockRecordList.add(mockRecord13);
+
           
     }
 
@@ -100,8 +122,7 @@ public class TestCalculations {
     @Test
     public void testGetDateOfPreviousRecord(){
 
-        List<LocalDate> dateList = Arrays.asList(LocalDate.of(2025, 01, 02), LocalDate.of(2025,01,03), LocalDate.of(2025,01,04), LocalDate.of(2025,01,06));
-        assertEquals(LocalDate.of(2025,01,06), Calculations.getDateOfLastRecord(dateList));
+        assertEquals(LocalDate.of(2025,01,06), Calculations.getDateOfLastRecord(mockDateList));
     }
 
     @Test
@@ -139,4 +160,11 @@ public class TestCalculations {
     public void testIfFitnessScoreIsNegativeThen0ShouldBeReturned(){
         assertEquals(0, Calculations.calculateNewFitnessScore(0, mockRecord9, 500));;
     }
+
+    @Test
+    public void testOneDecimalFormatterShouldReturnDoubleWithOneDecimal(){
+        assertEquals(7.7, Calculations.oneDecimalFormatter(7.67676767));
+    }
+
+
 }

@@ -32,17 +32,70 @@ public class Record {
         this.date = date;
     }
 
+    public Record(String ID, double distance, int time) {
+
+        this.ID = ID;
+        this.distance = distance;
+        this.time = time;
+        this.date = LocalDate.now();
+    }
+    
+    public Record(String ID, double distance, int time, LocalDate date) {
+        
+        this.ID = ID;
+        this.distance = distance;
+        this.time = time;
+        this.date = date;
+    }
+
+
 
 // ---- Methods -----
 
 
-    ///TODO -
-    /// 
-    /// 
-    public static boolean AvailableID(FileStorage fileStorage, String ID){
 
-        List<String> IDArray = fileStorage.getRecordIDs();
-        return true;
+
+
+    public static boolean IDAlreadyExists(ArrayList<Record> list, String ID)  {
+        for (Record r : list) {
+            if(r.getID() == ID) {
+                return true;
+            }
+            
+        }
+        System.out.println("ID already exists");
+        return false;
+    }
+
+    public void printRecordInfo(){
+        printRecordInfo(this);
+    }
+
+    //Overloading
+    public static void printRecordInfo(Record record){
+        System.out.println("Record ID: " + record.getID());
+        System.out.println("Record Distance: " + record.getDistance());
+        System.out.println("Record Time: " + record.getTime());
+        System.out.println("Record Date: " + record.getDate());
+    }
+
+    public static Record getRecordByID(ArrayList<Record> list, String ID) throws IllegalArgumentException {
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getID() == ID){
+                return list.get(i);
+            }
+        }
+        throw new IllegalArgumentException("Record not found");
+    }
+
+    public static void deleteRecordByID(ArrayList<Record> list, String ID) throws IllegalArgumentException {
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getID() == ID){
+                list.remove(i);
+                continue;
+            }
+        }
+        throw new IllegalArgumentException("Record not found");
     }
 
 

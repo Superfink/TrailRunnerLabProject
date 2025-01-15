@@ -15,11 +15,17 @@ import org.junit.jupiter.api.Test;
 
 public class TestFileStorage {
     protected FileStorage fileStorageMock;
-    
+    Record mockRecord1;
+    Record mockRecord2;
+
+    List<String> mockIDList;
     
     @BeforeEach
     public void setUp(){
         fileStorageMock = mock(FileStorage.class);
+        mockRecord1 = new Record(4.5, 456);
+        mockRecord2 = new Record(7.8, 800, LocalDate.of(2012, 12, 12));
+        mockIDList = new ArrayList<String>(Arrays.asList("1", "2"));
     }
 
     @Test
@@ -31,35 +37,16 @@ public class TestFileStorage {
 
     @Test
     public void testGetRecordIDs(){
-                
-        List<String> mockList = new ArrayList<String>(Arrays.asList("1", "2"));
-        when(fileStorageMock.getRecordIDs()).thenReturn(mockList);
         
-        List<String> expected = mockList;
+        when(fileStorageMock.getRecordIDs()).thenReturn(mockIDList);
+
         List<String> actual = fileStorageMock.getRecordIDs();
-
-        String[] expectedArray = expected.toArray(new String[0]);
-        String[] actualArray = actual.toArray(new String[0]);
-        
-        assertArrayEquals(expectedArray, actualArray);
-    }
-
-    @Disabled
-    @Test
-    public void testIDAlreadyExists(){
-       List<String> mockList = new ArrayList<String>(Arrays.asList("1", "2", "3")) ;
-        when(fileStorageMock.getRecordIDs()).thenReturn(mockList);
-
-        List<String> result = fileStorageMock.getRecordIDs();
-        //kolla om id redan finns
-
-
+        assertArrayEquals(mockIDList.toArray(), actual.toArray());
     }
 
     @Test
     public void testReadRecord(){
-        Record mockRecord1 = new Record(4.5, 456);
-        Record mockRecord2 = new Record(7.8, 800, LocalDate.of(2012, 12, 12));
+
         when(fileStorageMock.readRecord("1")).thenReturn(mockRecord1);
         when(fileStorageMock.readRecord("2")).thenReturn(mockRecord2);
 
