@@ -4,16 +4,9 @@
 ------Fokus-----
 
 
-Se över SKapandet av ID. Just nu: Listan kan skapas med läggs inte till i lista. 
-ID ska skapas automatiskt - kola listan först ... kanske runner.create record?
-
-Test: runner - skapa record som metod för runner, kolla av att id it eredan finns. 
-
-
-------???------Test: fitnessScore beräknas automatisk (?????)
-
-(Filtrera på tid -- returnera LIst<String> med aktuella ID) ---EJ KRAV
-Filtera på distans -- returnera LIst<String> med aktuella ID ---KRAV FÖR VG
+//Test: Beräkna fitness score automatiskt vid skapande av löprunda. Utgår från att listan är sorterad i datumordning
+//Test: Beräkna fitness score automatiskt vid skapande av löprunda. Listan är INTE sorterad i datumordning
+//Test: Filtrera på distans, returnera lista med ID
 
 Krav för VG: 
 
@@ -28,6 +21,11 @@ Krav för VG:
 
 
 ------KLART-----------------
+
+Se över SKapandet av ID. Just nu: Listan kan skapas med läggs inte till i lista. 
+ID ska skapas automatiskt - kola listan först ... kanske runner.create record?
+
+Test: runner - skapa record som metod för runner, kolla av att id it eredan finns. --KLART
 
 Test: Medelhastighet km/h beräknas automatiskt och läggas till record -- KLART
 Test: Medelhastighet min/km beräknas automatiskt och läggas till record -- KLART

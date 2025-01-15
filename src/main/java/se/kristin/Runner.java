@@ -35,8 +35,9 @@ public class Runner {
             }
             Record r = new Record(ID, distance, time, date);
             this.runList.add(r);
-
     }
+
+    
 
 
 /// ---------- Getters and setters ---------

@@ -43,7 +43,7 @@ public class TestRunner {
 
 
 
- //Testa att record inte kan skapas med ogiltigt ID   
+ //Testa att record kan skapas med giltigt ID   
     @Test
     public void testRecordCreationWithValidID(){
         int runListSize = runner.runList.size();
@@ -55,7 +55,7 @@ public class TestRunner {
     //Skapa Test: Test create record without date
 
     @Test
-    public void testAddRecordToRunListWithUnavailableID(){
+    public void testRecordCreationWithInvalidID(){
         int runListSize = runner.runList.size();
         Exception e = assertThrows(IllegalArgumentException.class, () -> { 
             runner.createAndAddRecord("ID1", 2, 3, LocalDate.of(2025,01,01));
@@ -63,6 +63,16 @@ public class TestRunner {
         assertEquals("ID already exists. Record not created", e.getMessage());
         assertEquals(runListSize, runner.runList.size());
     }
+
+//Test: Beräkna fitness score automatiskt vid skapande av löprunda. Utgår från att listan är sorterad i datumordning
+
+
+//Test: Beräkna fitness score automatiskt vid skapande av löprunda. Listan är INTE sorterad i datumordning
+
+//Test: Filtrera på tid, returnera lista med ID
+
+
+
 
 
 }
