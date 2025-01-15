@@ -32,6 +32,13 @@ public class Record {
         this.date = date;
     }
 
+    public Record(String ID, double distance, int time, LocalDate date){
+        this.distance = distance;
+        this.time = time;
+        this.date = date;
+        this.ID = ID;
+    }
+
 
 // ---- Methods -----
 
@@ -43,6 +50,37 @@ public class Record {
 
         List<String> IDArray = fileStorage.getRecordIDs();
         return true;
+    }
+
+    public void printRecordInfo(){
+        printRecordInfo(this);
+    }
+
+    //Overloading
+    public static void printRecordInfo(Record record){
+        System.out.println("Record ID: " + record.getID());
+        System.out.println("Record Distance: " + record.getDistance());
+        System.out.println("Record Time: " + record.getTime());
+        System.out.println("Record Date: " + record.getDate());
+    }
+
+    public static Record getRecordByID(ArrayList<Record> list, String ID) throws IllegalArgumentException {
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getID() == ID){
+                return list.get(i);
+            }
+        }
+        throw new IllegalArgumentException("Record not found");
+    }
+
+    public static void deleteRecordByID(ArrayList<Record> list, String ID) throws IllegalArgumentException {
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getID() == ID){
+                list.remove(i);
+                continue;
+            }
+        }
+        throw new IllegalArgumentException("Record not found");
     }
 
 

@@ -12,35 +12,22 @@ public class Calculations {
     
     
     public static double avgSpeedKmPerHour(double distance_km, int time_seconds){
-
-        DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
-        String avgSpeedString = format_oneDecimal.format((distance_km*3600/(time_seconds)));
-        return Double.valueOf(avgSpeedString);
+        return oneDecimalFormatter(distance_km*3600/(time_seconds));
     }
 
     //Overloading
     public static double avgSpeedKmPerHour(Record record){
-
-        DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
-        String avgSpeedString = format_oneDecimal.format((record.getDistance()*3600/(record.getTime())));
-        return Double.valueOf(avgSpeedString);
+        return oneDecimalFormatter(record.getDistance()*3600/(record.getTime()));
     }
 
     public static double speedMinutesPerKm(double distance_km, int time_seconds){
-
-        DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
-        String speedString = format_oneDecimal.format((time_seconds/(distance_km * 60)));
-        return Double.valueOf(speedString);
+        return oneDecimalFormatter(time_seconds/(distance_km * 60));
     }
 
     //Overloading
     public static double speedMinutesPerKm(Record record){
-
-        DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
-        String speedString = format_oneDecimal.format((record.getTime()/(record.getDistance() * 60)));
-        return Double.valueOf(speedString);
+        return oneDecimalFormatter((record.getTime()/(record.getDistance() * 60)));
     }
-
 
 
     public static double totalDistance(List<Double> distanceList){
@@ -52,12 +39,7 @@ public class Calculations {
     }
 
     public static double avgDistanceAllRecords(List<Double> distanceList){
-
-        DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
-        double totalDistance = totalDistance(distanceList);
-        double avgDistance = totalDistance / distanceList.size();
-        String speedString = format_oneDecimal.format(avgDistance);
-        return Double.valueOf(speedString);
+        return oneDecimalFormatter(totalDistance(distanceList)/distanceList.size());
     }
 
     public static LocalDate getDateOfLastRecord(List<LocalDate> dateList){
@@ -97,6 +79,9 @@ public class Calculations {
         */
     }
 
-
+    public static double oneDecimalFormatter(double value){
+        DecimalFormat format_oneDecimal = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken
+        return Double.valueOf(format_oneDecimal.format(value));
+    }
 }
 
