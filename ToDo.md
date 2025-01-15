@@ -7,7 +7,7 @@
 Se över SKapandet av ID. Just nu: Listan kan skapas med läggs inte till i lista. 
 ID ska skapas automatiskt - kola listan först ... kanske runner.create record?
 
-
+Test: runner - skapa record som metod för runner, kolla av att id it eredan finns. 
 
 
 ------???------Test: fitnessScore beräknas automatisk (?????)
