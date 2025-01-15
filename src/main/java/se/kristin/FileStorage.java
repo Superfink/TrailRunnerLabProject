@@ -19,7 +19,7 @@ public class FileStorage {
 
     public Record readRecord(String id) /*throws IOException*/ {
         //throw new UnsupportedOperationException();
-        Record record = new Record();
+        Record record = new Record("X", 1, 2);
         return record;
     }
 

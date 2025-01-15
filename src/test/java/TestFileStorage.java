@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.*;
+
 import se.kristin.*;
 import se.kristin.Record;
 
@@ -23,8 +23,8 @@ public class TestFileStorage {
     @BeforeEach
     public void setUp(){
         fileStorageMock = mock(FileStorage.class);
-        mockRecord1 = new Record(4.5, 456);
-        mockRecord2 = new Record(7.8, 800, LocalDate.of(2012, 12, 12));
+        mockRecord1 = new Record("IDFS1", 4.5, 456);
+        mockRecord2 = new Record("IDFS2", 7.8, 800, LocalDate.of(2012, 12, 12));
         mockIDList = new ArrayList<String>(Arrays.asList("1", "2"));
     }
 

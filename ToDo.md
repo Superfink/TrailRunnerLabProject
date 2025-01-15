@@ -3,26 +3,40 @@
 
 ------Fokus-----
 
-skapa löplista för löpare
-testa om id finns (i konstruktor)
-Ändra ID om felmeddelande
+
+Se över SKapandet av ID. Just nu: Listan kan skapas med läggs inte till i lista. 
+ID ska skapas automatiskt - kola listan först ... kanske runner.create record?
 
 
-Kolla att ID inte redan finns - ge fel -- KLART, MEN: --Gör detta i konstruktor! + ge fel
---(Avancerat: Kolla vad senaste ID är och tilldela automatiskt ID)
-
-Se över att all funktionalitet är täckt
-
-Filtera på distans -- returnera LIst<String> med aktuella ID
-Filtrera på tid -- returnera LIst<String> med aktuella ID
 
 
----
-Steg 2: Se över fillagring
+------???------Test: fitnessScore beräknas automatisk (?????)
+
+(Filtrera på tid -- returnera LIst<String> med aktuella ID) ---EJ KRAV
+Filtera på distans -- returnera LIst<String> med aktuella ID ---KRAV FÖR VG
+
+Krav för VG: 
+
+- En ny löprunda skall läggas till automatiskt i filen. 
+- Detaljerna för en löprunda skall nu läsas av via filen. 
+- Det skall gå att läsa av detaljerna, samt ta bort en löprunda genom att ange dess ID. 
+- Det skall gå att filtrera löprundor baserat på deras distans. 
+- Om ingen match finns skall ett meddelande skrivas ut. 
 
 
----------------
 
+
+
+------KLART-----------------
+
+Test: Medelhastighet km/h beräknas automatiskt och läggas till record -- KLART
+Test: Medelhastighet min/km beräknas automatiskt och läggas till record -- KLART
+
+Kolla att ID inte redan finns - ge fel -- KLART, MEN: --Gör detta i konstruktor! + ge fel -- KLART
+
+skapa löplista för löpare --KLART
+testa om id finns (i konstruktor) --KLART
+Ändra ID om felmeddelande -- KLART
 
 Printa detaljer för löprunda genom att ange ID -- KLART
 Radera löprunda genom att ange ID -- KLART

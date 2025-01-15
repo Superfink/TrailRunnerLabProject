@@ -54,26 +54,25 @@ public class TestRecord {
         assertEquals(LocalDate.of(2025, 01,10), record.getDate());
     }
 
-    @Test
-    public void testEmptyRecordCreation(){
-        Record record = new Record();
-        assertEquals(0, record.getDistance());
-        assertEquals(0, record.getDistance());
-        assertEquals(LocalDate.now(), record.getDate());
-    }
-
-    @Test
-    public void testRecordCreationWithoutID(){
-        Record record = new Record(4.2, 200, LocalDate.of(2024, 02, 13));
-        assertEquals(4.2, record.getDistance());
-        assertEquals(200, record.getTime());
-        assertEquals(LocalDate.of(2024, 02, 13), record.getDate());
-    }
 
     @Test
     public void testRecordCreationWithoutDate(){
-        Record run = new Record(4.0, 500);
+        Record run = new Record("ID", 4.0, 500);
         assertEquals(LocalDate.now(), run.getDate());
+    }
+
+    
+    
+    @Test
+    public void testAvgSpeedKmPerHourIsAutomaticallyCalculatedAndAddedToRecord(){
+        Record record = new Record("HF", 7.0, 3600);
+        assertEquals(7.0, record.getAvgSpeed_kmPerHour());
+    }
+
+    @Test
+    public void testAvgSpeedMinPerKmIsAutomaticallyCalculatedAndAddedToRecord(){
+        Record record = new Record("HF", 7.0, 3600);
+        assertEquals(8.6, record.getAvgSpeed_minPerKm(), 0.1);
     }
 
     @Test

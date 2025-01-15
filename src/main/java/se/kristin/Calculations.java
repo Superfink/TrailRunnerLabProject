@@ -11,12 +11,12 @@ public class Calculations {
     
     
     
-    public static double avgSpeedKmPerHour(double distance_km, int time_seconds){
+    public static double speedKmPerHour(double distance_km, int time_seconds){
         return oneDecimalFormatter(distance_km*3600/(time_seconds));
     }
 
     //Overloading
-    public static double avgSpeedKmPerHour(Record record){
+    public static double speedKmPerHour(Record record){
         return oneDecimalFormatter(record.getDistance()*3600/(record.getTime()));
     }
 
@@ -60,7 +60,7 @@ public class Calculations {
         double newFitnessScore = 
         (double) fitnessScore + 
         record.getDistance() + 
-        (avgSpeedKmPerHour(record) / speedMinutesPerKm(record)) - 
+        (speedKmPerHour(record) / speedMinutesPerKm(record)) - 
         (daysSinceLastRecord/2);
 
         if(newFitnessScore < 0){
