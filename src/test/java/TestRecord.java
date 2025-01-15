@@ -1,25 +1,17 @@
 
 
 import org.junit.jupiter.api.*;
-
-import se.kristin.FileStorage;
-import se.kristin.Main;
 import se.kristin.Record;
+import se.kristin.Runner;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class TestRecord {
 
     Record mockRecord1;
-    ArrayList<Record> mockRecordArrayList;
+    public ArrayList<Record> mockRecordArrayList;
     ArrayList<Record> mockRecordListCopy;
     
 
@@ -27,6 +19,8 @@ public class TestRecord {
     Record mockRecord11;
     Record mockRecord12;
     Record mockRecord13;
+
+    Runner runner;
 
     @BeforeEach
     public void setUp(){
@@ -46,6 +40,8 @@ public class TestRecord {
 
         mockRecordListCopy= new ArrayList<>();
         mockRecordListCopy.addAll(mockRecordArrayList);
+
+        runner = new Runner(123, 45, 67);
     }
 
 
@@ -67,7 +63,7 @@ public class TestRecord {
     }
 
     @Test
-    public void testRecordCreation(){
+    public void testRecordCreationWithoutID(){
         Record record = new Record(4.2, 200, LocalDate.of(2024, 02, 13));
         assertEquals(4.2, record.getDistance());
         assertEquals(200, record.getTime());
@@ -80,12 +76,15 @@ public class TestRecord {
         assertEquals(LocalDate.now(), run.getDate());
     }
 
-   // @Disabled TODO ----------------
     @Test
-    public void testIDAlreadyExists(){
-        
-        
+    public void testIDAlreadyExists_staticMethod(){
+        boolean expectedTrue = Record.IDAlreadyExists(mockRecordArrayList, "ID2");
+        boolean expectedFalse = Record.IDAlreadyExists(mockRecordArrayList, "NonExistentID");
+
+        assertEquals(true, expectedTrue);
+        assertEquals(false, expectedFalse);
     }
+
 
     @Test
     public void testPrintRecordInfo_forAnyRecord(){
@@ -122,7 +121,6 @@ public class TestRecord {
 
     @Test
     public void testDeleteRecordByID(){
-
         try {Record.deleteRecordByID(mockRecordArrayList, "ID2");} catch (Exception e) {}
         mockRecordListCopy.remove(1);
         assertEquals(mockRecordListCopy, mockRecordArrayList);

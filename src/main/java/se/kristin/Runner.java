@@ -1,11 +1,14 @@
 package se.kristin;
 
+import java.util.ArrayList;
+
 public class Runner {
 
     private int height;
     private int weight;
     private int age;
     private int fitnessScore;
+    public ArrayList<Record> runList = new ArrayList<>();
 
 
     public Runner(){
@@ -20,6 +23,15 @@ public class Runner {
         this.weight = weight;
         this.age = age;
         this.fitnessScore = 0;
+    }
+
+// --- Methods ---------
+
+    public void addRecordToRunList(Record record) throws IllegalArgumentException {
+        
+        if(Record.IDAlreadyExists(this.runList, record.getID()))
+            throw new IllegalArgumentException("ID already exists");
+        this.runList.add(record);
     }
 
 

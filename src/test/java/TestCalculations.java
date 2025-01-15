@@ -3,8 +3,7 @@ import se.kristin.Calculations;
 import se.kristin.Record;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;

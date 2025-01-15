@@ -44,18 +44,6 @@ public class TestFileStorage {
         assertArrayEquals(mockIDList.toArray(), actual.toArray());
     }
 
-    @Disabled
-    @Test
-    public void testIDAlreadyExists(){
-       List<String> mockList = new ArrayList<String>(Arrays.asList("1", "2", "3")) ;
-        when(fileStorageMock.getRecordIDs()).thenReturn(mockList);
-
-        List<String> result = fileStorageMock.getRecordIDs();
-        //kolla om id redan finns
-
-
-    }
-
     @Test
     public void testReadRecord(){
 

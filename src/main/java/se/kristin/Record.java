@@ -32,24 +32,39 @@ public class Record {
         this.date = date;
     }
 
-    public Record(String ID, double distance, int time, LocalDate date){
+    public Record(String ID, double distance, int time) {
+
+        this.ID = ID;
+        this.distance = distance;
+        this.time = time;
+        this.date = LocalDate.now();
+    }
+    
+    public Record(String ID, double distance, int time, LocalDate date) {
+        
+        this.ID = ID;
         this.distance = distance;
         this.time = time;
         this.date = date;
-        this.ID = ID;
     }
+
 
 
 // ---- Methods -----
 
 
-    ///TODO -
-    /// 
-    /// 
-    public static boolean AvailableID(FileStorage fileStorage, String ID){
 
-        List<String> IDArray = fileStorage.getRecordIDs();
-        return true;
+
+
+    public static boolean IDAlreadyExists(ArrayList<Record> list, String ID)  {
+        for (Record r : list) {
+            if(r.getID() == ID) {
+                return true;
+            }
+            
+        }
+        System.out.println("ID already exists");
+        return false;
     }
 
     public void printRecordInfo(){
