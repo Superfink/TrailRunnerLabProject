@@ -4,11 +4,14 @@ import se.kristin.Record;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+
 
 public class TestRunner {
 
     Record mockRecord1;
     Record mockRecord2;
+    Record mockRecord3;
     Runner runner;
     
 
@@ -17,6 +20,9 @@ public class TestRunner {
         runner = new Runner(176, 82, 42);
         mockRecord1 = new Record("ID1", 5.2, 123);
         mockRecord2 = new Record("ID2", 5.2, 123);
+        mockRecord3 = new Record("ID3", 4.2, 234);
+        runner.runList.add(mockRecord1);
+        runner.runList.add(mockRecord2);
     }
 
     @Test
@@ -36,23 +42,27 @@ public class TestRunner {
     }
 
     @Test
-    public void testAddRecordToRunList(){
+    public void testRecordCreationWithValidID(){
         int runListSize = runner.runList.size();
-        runner.addRecordToRunList(mockRecord1);
+        runner.createAndAddRecord("ID25", 23, 34, LocalDate.of(2025,01,01));
         assertEquals(runListSize+1, runner.runList.size());
+
     }
 
     @Test
-    public void testAddRecordToRunListWithUnavailableID(){
+    public void testRecordCreationWithInvalidID(){
         int runListSize = runner.runList.size();
-        runner.addRecordToRunList(mockRecord1);
-        runner.addRecordToRunList(mockRecord2);
         Exception e = assertThrows(IllegalArgumentException.class, () -> { 
-            runner.addRecordToRunList(mockRecord1);;
+            runner.createAndAddRecord("ID1", 2, 3, LocalDate.of(2025,01,01));
         });
-        assertEquals("ID already exists", e.getMessage());
-        assertEquals(runListSize+2, runner.runList.size());
+        assertEquals("ID already exists. Record not created", e.getMessage());
+        assertEquals(runListSize, runner.runList.size());
     }
 
-
+    @Test
+    public void testRecordCreationWithoutDate(){
+        runner.createAndAddRecord("ID65", 1, 1);
+        Record record = Record.getRecordByID(runner.runList, "ID65");
+        assertEquals(LocalDate.now(), record.getDate());
+    }
 }

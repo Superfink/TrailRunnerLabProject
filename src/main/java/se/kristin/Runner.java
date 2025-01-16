@@ -1,5 +1,6 @@
 package se.kristin;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Runner {
@@ -27,12 +28,20 @@ public class Runner {
 
 // --- Methods ---------
 
-    public void addRecordToRunList(Record record) throws IllegalArgumentException {
-        
-        if(Record.IDAlreadyExists(this.runList, record.getID()))
-            throw new IllegalArgumentException("ID already exists");
-        this.runList.add(record);
+    public void createAndAddRecord(String ID, double distance, int time){
+        createAndAddRecord(ID, distance, time, LocalDate.now());
     }
+
+
+    public void createAndAddRecord(String ID, double distance, int time, LocalDate date) throws IllegalArgumentException {
+            if (Record.IDAlreadyExists(runList, ID)){
+                throw new IllegalArgumentException("ID already exists. Record not created");
+            }
+            Record r = new Record(ID, distance, time, date);
+            this.runList.add(r);
+    }
+
+    
 
 
 /// ---------- Getters and setters ---------

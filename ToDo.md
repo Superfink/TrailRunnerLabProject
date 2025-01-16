@@ -3,26 +3,56 @@
 
 ------Fokus-----
 
-skapa löplista för löpare
-testa om id finns (i konstruktor)
-Ändra ID om felmeddelande
 
 
-Kolla att ID inte redan finns - ge fel -- KLART, MEN: --Gör detta i konstruktor! + ge fel
---(Avancerat: Kolla vad senaste ID är och tilldela automatiskt ID)
-
-Se över att all funktionalitet är täckt
-
-Filtera på distans -- returnera LIst<String> med aktuella ID
-Filtrera på tid -- returnera LIst<String> med aktuella ID
 
 
----
-Steg 2: Se över fillagring
+
+Kvällsreflektion: Ska man kunna skicka in sin Runner-instans och sätta Runner.fitnessScore direkt i metoden? Kanske. Löser det imorgon.  
 
 
----------------
+Krav för VG: 
 
+--väntar på svar--
+- Det skall gå att filtrera löprundor baserat på deras distans. --GetRecordIDs, hämta och kolla distans för varje runda, om rätt längd spara ID
+------------------
+
+
+
+
+- Det ska gå att ta bort en löprunda genom att ange dess ID. --KLART
+- Om ingen match finns skall ett meddelande skrivas ut.    --KLART
+- En ny löprunda skall läggas till automatiskt i filen. --KLART
+- Detaljerna för en löprunda skall nu läsas av via filen. --KLART
+
+------- Fokus klart ------
+
+
+
+---- Om jag hinner - ej nödvändigt -------
+
+Overkill //Test: Beräkna fitness score automatiskt vid skapande av löprunda. Utgår från att listan är sorterad i datumordning
+Overkill //Test: Beräkna fitness score automatiskt vid skapande av löprunda. Listan är INTE sorterad i datumordning
+
+
+
+------KLART-----------------
+
+//Test: Filtrera på distans, returnera lista med ID -- KLART
+
+Se över SKapandet av ID. Just nu: Listan kan skapas med läggs inte till i lista. 
+ID ska skapas automatiskt - kola listan först ... kanske runner.create record?
+
+Test: runner - skapa record som metod för runner, kolla av att id it eredan finns. --KLART
+
+Test: Medelhastighet km/h beräknas automatiskt och läggas till record -- KLART
+Test: Medelhastighet min/km beräknas automatiskt och läggas till record -- KLART
+
+Kolla att ID inte redan finns - ge fel -- KLART, MEN: --Gör detta i konstruktor! + ge fel -- KLART
+
+skapa löplista för löpare --KLART
+testa om id finns (i konstruktor) --KLART
+Ändra ID om felmeddelande -- KLART
 
 Printa detaljer för löprunda genom att ange ID -- KLART
 Radera löprunda genom att ange ID -- KLART

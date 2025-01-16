@@ -6,31 +6,21 @@ import java.util.List;
 
 <span class="nc" id="L7">public class FileStorage {</span>
 
-    //Overloaded
-    public void createRecord(double distance, int time_seconds, LocalDate date){
-<span class="nc" id="L11">        String id = &quot;5&quot;; //Change to automatic ID</span>
-<span class="nc" id="L12">        String.join(&quot;,&quot;, id, String.valueOf(distance), String.valueOf(time_seconds), String.valueOf(date));</span>
-<span class="nc" id="L13">    }</span>
-    
     public void createRecord(String id, double distance, int time_seconds, LocalDate date) 
-            /*throws IOException*/ {
-        //throw new UnsupportedOperationException();
-<span class="nc" id="L18">    }</span>
+            throws IOException {
+<span class="nc" id="L11">        throw new UnsupportedOperationException();</span>
+    }
 
-    public Record readRecord(String id) /*throws IOException*/ {
-        //throw new UnsupportedOperationException();
-<span class="nc" id="L22">        Record record = new Record();</span>
-<span class="nc" id="L23">        return record;</span>
+    public Record readRecord(String id) throws IOException {
+<span class="nc" id="L15">        throw new UnsupportedOperationException();</span>
     }
 
     public List&lt;String&gt; getRecordIDs() {
-<span class="nc" id="L27">        throw new UnsupportedOperationException();</span>
+<span class="nc" id="L19">        throw new UnsupportedOperationException();</span>
     }
     
     public void deleteRecord(String id) throws IOException {
-<span class="nc" id="L31">        throw new UnsupportedOperationException();</span>
+<span class="nc" id="L23">        throw new UnsupportedOperationException();</span>
     }
-
-    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

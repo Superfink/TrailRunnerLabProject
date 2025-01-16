@@ -14,30 +14,8 @@ public class Record {
     double avgSpeed_minPerKm;
 
 
-    public Record(){
-        this.distance = 0;
-        this.time = 0;
-        this.date = LocalDate.now();
-    }
-
-    public Record(double distance, int time){
-        this.distance = distance;
-        this.time = time;
-        this.date = LocalDate.now();
-    }
-
-    public Record(double distance, int time, LocalDate date){
-        this.distance = distance;
-        this.time = time;
-        this.date = date;
-    }
-
     public Record(String ID, double distance, int time) {
-
-        this.ID = ID;
-        this.distance = distance;
-        this.time = time;
-        this.date = LocalDate.now();
+        this(ID, distance, time, LocalDate.now());
     }
     
     public Record(String ID, double distance, int time, LocalDate date) {
@@ -46,15 +24,13 @@ public class Record {
         this.distance = distance;
         this.time = time;
         this.date = date;
+        this.avgSpeed_kmPerHour = Calculations.speedKmPerHour(this);;
+        this.avgSpeed_minPerKm = Calculations.speedMinutesPerKm(this);
     }
 
 
 
 // ---- Methods -----
-
-
-
-
 
     public static boolean IDAlreadyExists(ArrayList<Record> list, String ID)  {
         for (Record r : list) {
@@ -77,6 +53,8 @@ public class Record {
         System.out.println("Record Distance: " + record.getDistance());
         System.out.println("Record Time: " + record.getTime());
         System.out.println("Record Date: " + record.getDate());
+        System.out.println("Speed (km/h): " + record.getAvgSpeed_kmPerHour());
+        System.out.println("Speed (min/km): " + record.getAvgSpeed_minPerKm());
     }
 
     public static Record getRecordByID(ArrayList<Record> list, String ID) throws IllegalArgumentException {
@@ -133,5 +111,21 @@ public class Record {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public double getAvgSpeed_kmPerHour() {
+        return avgSpeed_kmPerHour;
+    }
+
+    public void setAvgSpeed_kmPerHour(double avgSpeed_kmPerHour) {
+        this.avgSpeed_kmPerHour = avgSpeed_kmPerHour;
+    }
+
+    public double getAvgSpeed_minPerKm() {
+        return avgSpeed_minPerKm;
+    }
+
+    public void setAvgSpeed_minPerKm(double avgSpeed_minPerKm) {
+        this.avgSpeed_minPerKm = avgSpeed_minPerKm;
     }
 }

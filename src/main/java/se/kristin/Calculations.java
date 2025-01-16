@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -11,12 +13,12 @@ public class Calculations {
     
     
     
-    public static double avgSpeedKmPerHour(double distance_km, int time_seconds){
+    public static double speedKmPerHour(double distance_km, int time_seconds){
         return oneDecimalFormatter(distance_km*3600/(time_seconds));
     }
 
     //Overloading
-    public static double avgSpeedKmPerHour(Record record){
+    public static double speedKmPerHour(Record record){
         return oneDecimalFormatter(record.getDistance()*3600/(record.getTime()));
     }
 
@@ -60,7 +62,7 @@ public class Calculations {
         double newFitnessScore = 
         (double) fitnessScore + 
         record.getDistance() + 
-        (avgSpeedKmPerHour(record) / speedMinutesPerKm(record)) - 
+        (speedKmPerHour(record) / speedMinutesPerKm(record)) - 
         (daysSinceLastRecord/2);
 
         if(newFitnessScore < 0){
@@ -77,6 +79,16 @@ public class Calculations {
         A - kilometertid (min/km)
         B - Dagar sedan senaste löptur
         */
+    }
+
+    public static List<String> filterByDistanceOver(ArrayList<Record> list, double limit){
+        List<String> returnList = new LinkedList<>();
+        for (Record r : list) {
+            if(r.getDistance() >= limit){
+                returnList.add(r.getID());
+            }
+        }
+        return  returnList;
     }
 
     public static double oneDecimalFormatter(double value){
