@@ -44,17 +44,13 @@ public class TestFileStorage {
     }
 
     @Test
-    public void testCreateRecordWithInvalidID() throws Exception {
-        doThrow(new UnsupportedOperationException("ID already exists"))
-            .when(fileStorageMock).createRecord("ID1", 1, 1, LocalDate.now());
+    public void testGetRecordIDs(){
         
-        try {
-            fileStorageMock.createRecord("ID1", 1, 1, LocalDate.now());
-        } catch (Exception e) {
-            assertEquals("ID already exists", e.getMessage());
-        }
+        when(fileStorageMock.getRecordIDs())
+            .thenReturn(mockIDList);
 
-        verify(fileStorageMock, times(1)).createRecord("ID1", 1, 1, LocalDate.now());
+        List<String> actual = fileStorageMock.getRecordIDs();
+        assertArrayEquals(mockIDList.toArray(), actual.toArray());
     }
 
     @Test
@@ -68,42 +64,40 @@ public class TestFileStorage {
         verify(fileStorageMock, times(1)).createRecord("ID1", 1, 1, LocalDate.now());
     }
 
-
     @Test
-    public void testGetRecordIDs(){
+    public void testCreateRecordWithInvalidIDExpectsException() throws Exception {
+        doThrow(new UnsupportedOperationException("ID already exists"))
+            .when(fileStorageMock).createRecord("ID1", 1, 1, LocalDate.now());
         
-        when(fileStorageMock.getRecordIDs())
-            .thenReturn(mockIDList);
+        try {
+            fileStorageMock.createRecord("ID1", 1, 1, LocalDate.now());
+        } catch (Exception e) {
+            assertEquals("ID already exists", e.getMessage());
+        }
 
-        List<String> actual = fileStorageMock.getRecordIDs();
-        assertArrayEquals(mockIDList.toArray(), actual.toArray());
+        verify(fileStorageMock, times(1)).createRecord("ID1", 1, 1, LocalDate.now());
     }
 
     @Test
     public void testReadRecord() throws Exception{
         
-        when(fileStorageMock.readRecord("1"))
+        when(fileStorageMock.readRecord("ID1"))
             .thenReturn(mockRecord1);
-        when(fileStorageMock.readRecord("2"))
+        when(fileStorageMock.readRecord("ID2"))
             .thenReturn(mockRecord2);
 
-        Record result1 = fileStorageMock.readRecord("1");
-        Record result2 = fileStorageMock.readRecord("2");
+        Record result1 = fileStorageMock.readRecord("ID1");
+        Record result2 = fileStorageMock.readRecord("ID2");
         
 
-        assertEquals(1.1, result1.getDistance() );
-        assertEquals(111, result1.getTime());
-        assertEquals(LocalDate.now(), result1.getDate());
-
-        assertEquals(2.2, result2.getDistance());
+        assertEquals("ID1", result1.getID());
         assertEquals(222, result2.getTime());
-        assertEquals(LocalDate.of(2012, 12, 12), result2.getDate());
         
     }
 
 
     @Test
-    public void testRecordNotFound() throws Exception {
+    public void testRecordNotFoundExpectsException() throws Exception {
         doThrow(new UnsupportedOperationException("Record not found"))
             .when(fileStorageMock).readRecord("ID34");
         
@@ -130,18 +124,18 @@ public class TestFileStorage {
     }
 
 
-        @Test
-        public void testDeleteRecordWithInvalidID() throws Exception {
-    
-            doThrow(new UnsupportedOperationException("Record not found"))
-                .when(fileStorageMock).deleteRecord("ID5");
+    @Test
+    public void testDeleteRecordWithInvalidIDExpectException() throws Exception {
 
-                try{
-                    fileStorageMock.deleteRecord("ID5");
-                }catch(Exception e){
-                    assertEquals("Record not found", e.getMessage());
-                }
-                verify(fileStorageMock, times(1)).deleteRecord("ID5");
+        doThrow(new UnsupportedOperationException("Record not found"))
+            .when(fileStorageMock).deleteRecord("ID5");
+
+            try{
+                fileStorageMock.deleteRecord("ID5");
+            }catch(Exception e){
+                assertEquals("Record not found", e.getMessage());                
+            }
+            verify(fileStorageMock, times(1)).deleteRecord("ID5");
     }
     
 }

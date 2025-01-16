@@ -6,12 +6,17 @@
 
 
 
+
+
+Kvällsreflektion: Ska man kunna skicka in sin Runner-instans och sätta Runner.fitnessScore direkt i metoden? Kanske. Löser det imorgon.  
+
+
 Krav för VG: 
 
-
-
-
+--väntar på svar--
 - Det skall gå att filtrera löprundor baserat på deras distans. --GetRecordIDs, hämta och kolla distans för varje runda, om rätt längd spara ID
+------------------
+
 
 
 
