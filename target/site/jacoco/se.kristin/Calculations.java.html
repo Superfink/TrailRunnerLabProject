@@ -5,71 +5,85 @@ import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
-<span class="nc" id="L12">public class Calculations {</span>
+<span class="nc" id="L13">public class Calculations {</span>
     
     
     
     public static double speedKmPerHour(double distance_km, int time_seconds){
-<span class="fc" id="L17">        return oneDecimalFormatter(distance_km*3600/(time_seconds));</span>
+<span class="fc" id="L18">        return oneDecimalFormatter(distance_km*3600/(time_seconds));</span>
     }
 
     //Overloading
     public static double speedKmPerHour(Record record){
-<span class="fc" id="L22">        return oneDecimalFormatter(record.getDistance()*3600/(record.getTime()));</span>
+<span class="fc" id="L23">        return oneDecimalFormatter(record.getDistance()*3600/(record.getTime()));</span>
     }
 
     public static double speedMinutesPerKm(double distance_km, int time_seconds){
-<span class="fc" id="L26">        return oneDecimalFormatter(time_seconds/(distance_km * 60));</span>
+<span class="fc" id="L27">        return oneDecimalFormatter(time_seconds/(distance_km * 60));</span>
     }
 
     //Overloading
     public static double speedMinutesPerKm(Record record){
-<span class="fc" id="L31">        return oneDecimalFormatter((record.getTime()/(record.getDistance() * 60)));</span>
+<span class="fc" id="L32">        return oneDecimalFormatter((record.getTime()/(record.getDistance() * 60)));</span>
     }
 
 
     public static double totalDistance(List&lt;Double&gt; distanceList){
-<span class="fc" id="L36">        double totalDistance = 0;</span>
-<span class="fc bfc" id="L37" title="All 2 branches covered.">        for(int i = 0; i &lt; distanceList.size(); i++){</span>
-<span class="fc" id="L38">            totalDistance = totalDistance + distanceList.get(i);</span>
+<span class="fc" id="L37">        double totalDistance = 0;</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for(int i = 0; i &lt; distanceList.size(); i++){</span>
+<span class="fc" id="L39">            totalDistance = totalDistance + distanceList.get(i);</span>
         }
-<span class="fc" id="L40">        return totalDistance;</span>
+<span class="fc" id="L41">        return totalDistance;</span>
     }
 
     public static double avgDistanceAllRecords(List&lt;Double&gt; distanceList){
-<span class="fc" id="L44">        return oneDecimalFormatter(totalDistance(distanceList)/distanceList.size());</span>
+<span class="fc" id="L45">        return oneDecimalFormatter(totalDistance(distanceList)/distanceList.size());</span>
     }
 
     public static LocalDate getDateOfLastRecord(List&lt;LocalDate&gt; dateList){
-<span class="fc" id="L48">        return dateList.get(dateList.size()-1);</span>
+<span class="fc" id="L49">        return dateList.get(dateList.size()-1);</span>
     }
 
     public static int daysBetween(LocalDate date1, LocalDate date2){
-<span class="fc" id="L52">        return (int) Math.abs(ChronoUnit.DAYS.between(date1, date2));</span>
+<span class="fc" id="L53">        return (int) Math.abs(ChronoUnit.DAYS.between(date1, date2));</span>
     }
 
     //Overloading
     public static int daysBetween(Record record1, Record record2){
-<span class="fc" id="L57">        return daysBetween(record1.getDate(), record2.getDate());</span>
+<span class="fc" id="L58">        return daysBetween(record1.getDate(), record2.getDate());</span>
+    }
+
+    public static int daysBetween(List&lt;Record&gt; list){
+<span class="fc" id="L62">        List&lt;LocalDate&gt; dateList = new LinkedList&lt;&gt;();</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if (list.size() &lt;=1) {</span>
+<span class="fc" id="L64">            return 0;</span>
+        }
+        
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        for (Record r : list) {</span>
+<span class="fc" id="L68">            dateList.add(r.getDate());</span>
+<span class="fc" id="L69">        }</span>
+<span class="fc" id="L70">        Collections.sort(dateList);</span>
+<span class="fc" id="L71">        return daysBetween(dateList.get(dateList.size()-1), dateList.get(dateList.size()-2));</span>
     }
 
     public static int calculateNewFitnessScore(int fitnessScore, Record record, int daysSinceLastRecord){
 
-<span class="fc" id="L62">        double newFitnessScore = </span>
+<span class="fc" id="L76">        double newFitnessScore = </span>
         (double) fitnessScore + 
-<span class="fc" id="L64">        record.getDistance() + </span>
-<span class="fc" id="L65">        (speedKmPerHour(record) / speedMinutesPerKm(record)) - </span>
+<span class="fc" id="L78">        record.getDistance() + </span>
+<span class="fc" id="L79">        (speedKmPerHour(record) / speedMinutesPerKm(record)) - </span>
         (daysSinceLastRecord/2);
 
-<span class="fc bfc" id="L68" title="All 2 branches covered.">        if(newFitnessScore &lt; 0){</span>
-<span class="fc" id="L69">            return 0;</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if(newFitnessScore &lt; 0){</span>
+<span class="fc" id="L83">            return 0;</span>
         }
 
-<span class="fc" id="L72">        return (int) newFitnessScore;</span>
+<span class="fc" id="L86">        return (int) newFitnessScore;</span>
   
         /*formel: - Fitness Score (efter varje löptur), ej &lt;0, endast heltal, Om första rundan är värdet 0
         X + Y + Z/A - B/2
@@ -82,18 +96,18 @@ import java.util.Locale;
     }
 
     public static List&lt;String&gt; filterByDistanceOver(ArrayList&lt;Record&gt; list, double limit){
-<span class="fc" id="L85">        List&lt;String&gt; returnList = new LinkedList&lt;&gt;();</span>
-<span class="fc bfc" id="L86" title="All 2 branches covered.">        for (Record r : list) {</span>
-<span class="fc bfc" id="L87" title="All 2 branches covered.">            if(r.getDistance() &gt;= limit){</span>
-<span class="fc" id="L88">                returnList.add(r.getID());</span>
+<span class="fc" id="L99">        List&lt;String&gt; returnList = new LinkedList&lt;&gt;();</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        for (Record r : list) {</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            if(r.getDistance() &gt;= limit){</span>
+<span class="fc" id="L102">                returnList.add(r.getID());</span>
             }
-<span class="fc" id="L90">        }</span>
-<span class="fc" id="L91">        return  returnList;</span>
+<span class="fc" id="L104">        }</span>
+<span class="fc" id="L105">        return  returnList;</span>
     }
 
     public static double oneDecimalFormatter(double value){
-<span class="fc" id="L95">        DecimalFormat format_oneDecimal = new DecimalFormat(&quot;#.#&quot;, new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken</span>
-<span class="fc" id="L96">        return Double.valueOf(format_oneDecimal.format(value));</span>
+<span class="fc" id="L109">        DecimalFormat format_oneDecimal = new DecimalFormat(&quot;#.#&quot;, new DecimalFormatSymbols(Locale.US)); //För att få punkt som skiletecken i stället för kommatecken</span>
+<span class="fc" id="L110">        return Double.valueOf(format_oneDecimal.format(value));</span>
     }
 }
 

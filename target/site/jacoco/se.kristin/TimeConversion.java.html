@@ -18,24 +18,21 @@
 <span class="fc" id="L18">        return minutes * 60;</span>
     }
 
-
-
-
     public static int convertSecondsToHours(int seconds){
-<span class="fc" id="L25">        return seconds / 3600;</span>
+<span class="fc" id="L22">        return seconds / 3600;</span>
     }
 
-    public static int convertSecondsToMinutes(int seconds){
-<span class="fc" id="L29">        int minutes = seconds / 60;</span>
-<span class="fc bfc" id="L30" title="All 2 branches covered.">        while(minutes &gt; 60){</span>
-<span class="fc" id="L31">            minutes = minutes - 60;</span>
+    public static int convertSecondsToMinutesExcludingHours(int seconds){
+<span class="fc" id="L26">        int minutes = seconds / 60;</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        while(minutes &gt; 60){</span>
+<span class="fc" id="L28">            minutes = minutes - 60;</span>
         }
-<span class="fc" id="L33">        return minutes;</span>
+<span class="fc" id="L30">        return minutes;</span>
     }
 
-    public static int convertSecondsToRemainingSeconds(int seconds){
-<span class="fc" id="L37">        int remainingSeconds = seconds % 60; //Filter minutes</span>
-<span class="fc" id="L38">        return remainingSeconds;</span>
+    public static int convertSecondsExclutingMinutesAndHours(int seconds){
+<span class="fc" id="L34">        int remainingSeconds = seconds % 60; //Filter minutes</span>
+<span class="fc" id="L35">        return remainingSeconds;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

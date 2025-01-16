@@ -53,14 +53,14 @@ public class TestCalculations {
         mockRecord4 = new Record("ID4", 6.0, 1800);
         mockRecord5 = new Record("ID5", 4.3, 3232);
         mockRecord6 = new Record("ID6", 5.0, 2400);
-        mockRecord7 = new Record("ID7", 8.3, 4550);
-        mockRecord8 = new Record("ID8", 8.3, 4567);
+        mockRecord7 = new Record("ID7", 8.3, 4550, LocalDate.of(2024,12,31));
+        mockRecord8 = new Record("ID8", 8.3, 4567, LocalDate.of(2024,02,5));
         mockRecord9 = new Record("ID9", 3.5, 5432);
 
         mockRecord10 = new Record("ID10", 1.1, 1111, LocalDate.of(2025,01,01));
         mockRecord11 = new Record("ID11", 2.2, 2222, LocalDate.of(2025,01,02));
         mockRecord12 = new Record("ID12", 3.3, 3333, LocalDate.of(2025,01,03));
-        mockRecord13 = new Record("ID13", 4.4, 4444, LocalDate.of(2025,01,04));
+        mockRecord13 = new Record("ID13", 4.4, 4444, LocalDate.of(2025,01,06));
 
         mockDateList = Arrays.asList(LocalDate.of(2025, 01, 02), LocalDate.of(2025,01,03), LocalDate.of(2025,01,04), LocalDate.of(2025,01,06));
 
@@ -69,7 +69,8 @@ public class TestCalculations {
         mockRecordList.add(mockRecord11);
         mockRecordList.add(mockRecord12);
         mockRecordList.add(mockRecord13);
-
+        mockRecordList.add(mockRecord7);
+        mockRecordList.add(mockRecord8);
           
     }
 
@@ -133,6 +134,19 @@ public class TestCalculations {
     }
 
     @Test
+    public void testDaysBetween_twoLastRecords(){
+        assertEquals(3, Calculations.daysBetween(mockRecordList));
+    }
+
+    @Test
+    public void testDaysBetween_twoLastRecordsWithLessThanTwoRecords(){
+        ArrayList<Record> list = new ArrayList<>();
+        assertEquals(0, Calculations.daysBetween(list));
+        list.add(mockRecord1);
+        assertEquals(0, Calculations.daysBetween(list));
+    }
+
+    @Test
     public void testOnlyPositiveNumbersShouldBeReturnedBetweenDates(){
         assertEquals(34, Calculations.daysBetween(mockDate3, mockDate1));
         assertEquals(152, Calculations.daysBetween(mockRecord3, mockRecord2));
@@ -158,11 +172,11 @@ public class TestCalculations {
     @Test //Should return list of IDs with distances over entered limit
     public void testFilterRecordsbyDistance(){
 
-        List<String> expected = List.of("ID12", "ID13");
+        List<String> expected = List.of("ID12", "ID13", "ID7", "ID8");
         List<String> actual = Calculations.filterByDistanceOver(mockRecordList, 3.3);
         assertEquals(expected, actual);
 
-        List<String> expected2 = List.of("ID13");
+        List<String> expected2 = List.of("ID13", "ID7", "ID8");
         List<String> actual2 = Calculations.filterByDistanceOver(mockRecordList, 4.3);
         assertEquals(expected2, actual2);
 
