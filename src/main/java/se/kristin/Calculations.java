@@ -5,6 +5,7 @@ import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -55,6 +56,19 @@ public class Calculations {
     //Overloading
     public static int daysBetween(Record record1, Record record2){
         return daysBetween(record1.getDate(), record2.getDate());
+    }
+
+    public static int daysBetween(List<Record> list){
+        List<LocalDate> dateList = new LinkedList<>();
+        if (list.size() <=1) {
+            return 0;
+        }
+        
+        for (Record r : list) {
+            dateList.add(r.getDate());
+        }
+        Collections.sort(dateList);
+        return daysBetween(dateList.get(dateList.size()-1), dateList.get(dateList.size()-2));
     }
 
     public static int calculateNewFitnessScore(int fitnessScore, Record record, int daysSinceLastRecord){
