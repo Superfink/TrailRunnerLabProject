@@ -18,14 +18,11 @@ public class TimeConversion {
         return minutes * 60;
     }
 
-
-
-
     public static int convertSecondsToHours(int seconds){
         return seconds / 3600;
     }
 
-    public static int convertSecondsToMinutes(int seconds){
+    public static int convertSecondsToMinutesExcludingHours(int seconds){
         int minutes = seconds / 60;
         while(minutes > 60){
             minutes = minutes - 60;
@@ -33,7 +30,7 @@ public class TimeConversion {
         return minutes;
     }
 
-    public static int convertSecondsToRemainingSeconds(int seconds){
+    public static int convertSecondsExclutingMinutesAndHours(int seconds){
         int remainingSeconds = seconds % 60; //Filter minutes
         return remainingSeconds;
     }

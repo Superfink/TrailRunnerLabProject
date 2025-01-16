@@ -41,9 +41,6 @@ public class TestRunner {
         assertEquals(1, runner.getAge());
     }
 
-
-
- //Testa att record kan skapas med giltigt ID   
     @Test
     public void testRecordCreationWithValidID(){
         int runListSize = runner.runList.size();
@@ -51,8 +48,6 @@ public class TestRunner {
         assertEquals(runListSize+1, runner.runList.size());
 
     }
-
-    //Skapa Test: Test create record without date
 
     @Test
     public void testRecordCreationWithInvalidID(){
@@ -64,15 +59,10 @@ public class TestRunner {
         assertEquals(runListSize, runner.runList.size());
     }
 
-//Test: Beräkna fitness score automatiskt vid skapande av löprunda. Utgår från att listan är sorterad i datumordning
-
-
-//Test: Beräkna fitness score automatiskt vid skapande av löprunda. Listan är INTE sorterad i datumordning
-
-//Test: Filtrera på tid, returnera lista med ID
-
-
-
-
-
+    @Test
+    public void testRecordCreationWithoutDate(){
+        runner.createAndAddRecord("ID65", 1, 1);
+        Record record = Record.getRecordByID(runner.runList, "ID65");
+        assertEquals(LocalDate.now(), record.getDate());
+    }
 }

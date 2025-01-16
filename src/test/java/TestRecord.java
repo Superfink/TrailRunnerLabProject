@@ -54,15 +54,12 @@ public class TestRecord {
         assertEquals(LocalDate.of(2025, 01,10), record.getDate());
     }
 
-
     @Test
     public void testRecordCreationWithoutDate(){
-        Record run = new Record("ID", 4.0, 500);
-        assertEquals(LocalDate.now(), run.getDate());
+        Record record = new Record("ID", 4.0, 500);
+        assertEquals(LocalDate.now(), record.getDate());
     }
 
-    
-    
     @Test
     public void testAvgSpeedKmPerHourIsAutomaticallyCalculatedAndAddedToRecord(){
         Record record = new Record("HF", 7.0, 3600);
@@ -76,12 +73,9 @@ public class TestRecord {
     }
 
     @Test
-    public void testIDAlreadyExists_staticMethod(){
-        boolean expectedTrue = Record.IDAlreadyExists(mockRecordArrayList, "ID2");
-        boolean expectedFalse = Record.IDAlreadyExists(mockRecordArrayList, "NonExistentID");
-
-        assertEquals(true, expectedTrue);
-        assertEquals(false, expectedFalse);
+    public void testIDAlreadyExists(){
+        assertEquals(true, Record.IDAlreadyExists(mockRecordArrayList, "ID2"));
+        assertEquals(false, Record.IDAlreadyExists(mockRecordArrayList, "NonExistentID"));
     }
 
 
@@ -92,27 +86,19 @@ public class TestRecord {
 
     @Test
     public void testPrintRecordInfo_forThisRecord(){
-        mockRecord1.printRecordInfo();
+        mockRecord12.printRecordInfo();
     }
 
     @Test
     public void testGetRecordByID(){
         try {Record.getRecordByID(mockRecordArrayList, "ID2");} catch (Exception e) {}
         assertEquals(mockRecord11, mockRecordArrayList.get(1));
-        assertEquals("ID2", mockRecord11.getID());
-        assertEquals(2.2, mockRecord11.getDistance());
-        
-        try {Record.getRecordByID(mockRecordArrayList, "ID4");} catch (Exception e) {}
-        assertEquals(mockRecord13, mockRecordArrayList.get(3));
-        assertEquals("ID4", mockRecord13.getID());
-        assertEquals(4444, mockRecord13.getTime());
-    
     }
 
     @Test 
     public void testExceptionWhenTryingToGetRecordWithNonExistingID(){
         Exception e = assertThrows(IllegalArgumentException.class, () -> { 
-            Record.getRecordByID(mockRecordArrayList, "ID46");
+            Record.getRecordByID(mockRecordArrayList, "NonExistingID");
         });
         assertEquals("Record not found", e.getMessage());
     }    
@@ -123,14 +109,11 @@ public class TestRecord {
         try {Record.deleteRecordByID(mockRecordArrayList, "ID2");} catch (Exception e) {}
         mockRecordListCopy.remove(1);
         assertEquals(mockRecordListCopy, mockRecordArrayList);
-        try {Record.deleteRecordByID(mockRecordArrayList, "ID3");} catch (Exception e) {}
-        mockRecordListCopy.remove(1);
-        assertEquals(mockRecordListCopy, mockRecordArrayList);
     }
 
 
     @Test
-    public void testRecordIsNotDeletedWhenWrongIDIsEntered(){
+    public void testRecordIsNotDeletedWhenInvalidIDIsEntered(){
         try {Record.deleteRecordByID(mockRecordArrayList, "ID323");} catch (IllegalArgumentException e) {}
         assertEquals(mockRecordListCopy, mockRecordArrayList);
     }

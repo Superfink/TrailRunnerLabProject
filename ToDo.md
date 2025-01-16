@@ -4,23 +4,36 @@
 ------Fokus-----
 
 
-//Test: Beräkna fitness score automatiskt vid skapande av löprunda. Utgår från att listan är sorterad i datumordning
-//Test: Beräkna fitness score automatiskt vid skapande av löprunda. Listan är INTE sorterad i datumordning
-//Test: Filtrera på distans, returnera lista med ID
+
 
 Krav för VG: 
 
-- En ny löprunda skall läggas till automatiskt i filen. 
-- Detaljerna för en löprunda skall nu läsas av via filen. 
-- Det skall gå att läsa av detaljerna, samt ta bort en löprunda genom att ange dess ID. 
-- Det skall gå att filtrera löprundor baserat på deras distans. 
-- Om ingen match finns skall ett meddelande skrivas ut. 
 
 
+
+- Det skall gå att filtrera löprundor baserat på deras distans. --GetRecordIDs, hämta och kolla distans för varje runda, om rätt längd spara ID
+
+
+
+- Det ska gå att ta bort en löprunda genom att ange dess ID. --KLART
+- Om ingen match finns skall ett meddelande skrivas ut.    --KLART
+- En ny löprunda skall läggas till automatiskt i filen. --KLART
+- Detaljerna för en löprunda skall nu läsas av via filen. --KLART
+
+------- Fokus klart ------
+
+
+
+---- Om jag hinner - ej nödvändigt -------
+
+Overkill //Test: Beräkna fitness score automatiskt vid skapande av löprunda. Utgår från att listan är sorterad i datumordning
+Overkill //Test: Beräkna fitness score automatiskt vid skapande av löprunda. Listan är INTE sorterad i datumordning
 
 
 
 ------KLART-----------------
+
+//Test: Filtrera på distans, returnera lista med ID -- KLART
 
 Se över SKapandet av ID. Just nu: Listan kan skapas med läggs inte till i lista. 
 ID ska skapas automatiskt - kola listan först ... kanske runner.create record?

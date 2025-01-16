@@ -28,6 +28,10 @@ public class Runner {
 
 // --- Methods ---------
 
+    public void createAndAddRecord(String ID, double distance, int time){
+        createAndAddRecord(ID, distance, time, LocalDate.now());
+    }
+
 
     public void createAndAddRecord(String ID, double distance, int time, LocalDate date) throws IllegalArgumentException {
             if (Record.IDAlreadyExists(runList, ID)){

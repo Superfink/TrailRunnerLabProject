@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -77,6 +79,16 @@ public class Calculations {
         A - kilometertid (min/km)
         B - Dagar sedan senaste löptur
         */
+    }
+
+    public static List<String> filterByDistanceOver(ArrayList<Record> list, double limit){
+        List<String> returnList = new LinkedList<>();
+        for (Record r : list) {
+            if(r.getDistance() >= limit){
+                returnList.add(r.getID());
+            }
+        }
+        return  returnList;
     }
 
     public static double oneDecimalFormatter(double value){

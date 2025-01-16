@@ -32,10 +32,6 @@ public class Record {
 
 // ---- Methods -----
 
-
-
-
-
     public static boolean IDAlreadyExists(ArrayList<Record> list, String ID)  {
         for (Record r : list) {
             if(r.getID() == ID) {

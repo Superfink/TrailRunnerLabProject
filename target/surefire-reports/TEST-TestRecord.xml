@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestRecord" time="0.11" tests="12" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestRecord" time="0.163" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="SE"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.4.7-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\KristinKullberg\AppData\Local\Temp\surefire626572733802544587\surefirebooter-20250115144340838_3.jar C:\Users\KristinKullberg\AppData\Local\Temp\surefire626572733802544587 2025-01-15T14-43-40_640-jvmRun1 surefire-20250115144340838_1tmp surefire_0-20250115144340838_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\KristinKullberg\AppData\Local\Temp\surefire9787389099223437710\surefirebooter-20250116100818123_3.jar C:\Users\KristinKullberg\AppData\Local\Temp\surefire9787389099223437710 2025-01-16T10-08-17_866-jvmRun1 surefire-20250116100818123_1tmp surefire_0-20250116100818123_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\KristinKullberg\TrailRunnerLabProject\target\test-classes;C:\Users\KristinKullberg\TrailRunnerLabProject\target\classes;C:\Users\KristinKullberg\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.1\junit-jupiter-engine-5.9.1.jar;C:\Users\KristinKullberg\.m2\repository\org\junit\platform\junit-platform-engine\1.9.1\junit-platform-engine-1.9.1.jar;C:\Users\KristinKullberg\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\KristinKullberg\.m2\repository\org\junit\platform\junit-platform-commons\1.9.1\junit-platform-commons-1.9.1.jar;C:\Users\KristinKullberg\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.1\junit-jupiter-api-5.9.1.jar;C:\Users\KristinKullberg\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\KristinKullberg\.m2\repository\org\mockito\mockito-core\5.8.0\mockito-core-5.8.0.jar;C:\Users\KristinKullberg\.m2\repository\net\bytebuddy\byte-buddy\1.14.10\byte-buddy-1.14.10.jar;C:\Users\KristinKullberg\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.10\byte-buddy-agent-1.14.10.jar;C:\Users\KristinKullberg\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\KristinKullberg\AppData\Local\Temp\surefire626572733802544587\surefirebooter-20250115144340838_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\KristinKullberg\AppData\Local\Temp\surefire9787389099223437710\surefirebooter-20250116100818123_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.4+7-LTS"/>
@@ -59,31 +59,35 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testEmptyRecordCreation" classname="TestRecord" time="0.008"/>
-  <testcase name="testGetRecordByID" classname="TestRecord" time="0.006"/>
-  <testcase name="testDeleteRecordByID" classname="TestRecord" time="0.003"/>
-  <testcase name="testRecordCreationWithoutID" classname="TestRecord" time="0.003"/>
-  <testcase name="testRecordCreationWithoutDate" classname="TestRecord" time="0.0"/>
-  <testcase name="testExceptionWhenTryingToGetRecordWithNonExistingID" classname="TestRecord" time="0.011"/>
-  <testcase name="testIDAlreadyExists_staticMethod" classname="TestRecord" time="0.0">
+  <testcase name="testGetRecordByID" classname="TestRecord" time="0.01"/>
+  <testcase name="testDeleteRecordByID" classname="TestRecord" time="0.004"/>
+  <testcase name="testAvgSpeedKmPerHourIsAutomaticallyCalculatedAndAddedToRecord" classname="TestRecord" time="0.007"/>
+  <testcase name="testRecordCreationWithoutDate" classname="TestRecord" time="0.011"/>
+  <testcase name="testExceptionWhenTryingToGetRecordWithNonExistingID" classname="TestRecord" time="0.017"/>
+  <testcase name="testIDAlreadyExists_staticMethod" classname="TestRecord" time="0.003">
     <system-out><![CDATA[ID already exists
 ]]></system-out>
   </testcase>
-  <testcase name="testExceptionWhenTryingToDeleteRecordWithNonExistingID" classname="TestRecord" time="0.0"/>
+  <testcase name="testAvgSpeedMinPerKmIsAutomaticallyCalculatedAndAddedToRecord" classname="TestRecord" time="0.005"/>
+  <testcase name="testExceptionWhenTryingToDeleteRecordWithNonExistingID" classname="TestRecord" time="0.007"/>
   <testcase name="testFullRecordCreation" classname="TestRecord" time="0.002"/>
-  <testcase name="testRecordIsNotDeletedWhenWrongIDIsEntered" classname="TestRecord" time="0.003"/>
-  <testcase name="testPrintRecordInfo_forThisRecord" classname="TestRecord" time="0.022">
+  <testcase name="testRecordIsNotDeletedWhenWrongIDIsEntered" classname="TestRecord" time="0.002"/>
+  <testcase name="testPrintRecordInfo_forThisRecord" classname="TestRecord" time="0.024">
     <system-out><![CDATA[Record ID: ID22
 Record Distance: 5.5
 Record Time: 300
 Record Date: 2025-01-01
+Speed (km/h): 66.0
+Speed (min/km): 0.9
 ]]></system-out>
   </testcase>
-  <testcase name="testPrintRecordInfo_forAnyRecord" classname="TestRecord" time="0.006">
+  <testcase name="testPrintRecordInfo_forAnyRecord" classname="TestRecord" time="0.004">
     <system-out><![CDATA[Record ID: ID22
 Record Distance: 5.5
 Record Time: 300
 Record Date: 2025-01-01
+Speed (km/h): 66.0
+Speed (min/km): 0.9
 ]]></system-out>
   </testcase>
 </testsuite>
